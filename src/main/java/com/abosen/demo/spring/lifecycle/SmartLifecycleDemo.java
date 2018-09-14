@@ -1,13 +1,15 @@
-package com.abosen.demo.spring.lifecycle; /**
- * @author abosen
- * @date 2018/9/14
- */
+package com.abosen.demo.spring.lifecycle;
+
 
 import org.springframework.context.SmartLifecycle;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+/**
+ * @author abosen
+ * @date 2018/9/14
+ */
 public class SmartLifecycleDemo implements SmartLifecycle {
 
     private boolean isRunning = false;
@@ -21,8 +23,9 @@ public class SmartLifecycleDemo implements SmartLifecycle {
     public void init() {
         System.out.println("PostConstruct");
     }
+
     @PreDestroy
-    public void destroy(){
+    public void destroy() {
         System.out.println("PreDestroy");
     }
 
