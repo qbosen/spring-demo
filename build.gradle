@@ -10,7 +10,7 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
-ext{
+ext {
     springVersion = '5.0.9.RELEASE'
 }
 dependencies {
