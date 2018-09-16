@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'war'
 }
 
 group 'com.abosen'
@@ -13,10 +14,11 @@ repositories {
 ext {
     springVersion = '5.0.9.RELEASE'
 }
-dependencies {
 
-    compile group: 'org.springframework', name: 'spring-core', version: "${springVersion}"
-    compile group: 'org.springframework', name: 'spring-beans', version: "${springVersion}"
-    compile group: 'org.springframework', name: 'spring-context', version: "${springVersion}"
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+allprojects {
+    apply plugin: 'java'
+
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+    }
 }
