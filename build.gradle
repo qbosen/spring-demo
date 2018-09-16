@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'war'
 }
 
 group 'com.abosen'
@@ -19,6 +18,7 @@ allprojects {
     apply plugin: 'java'
 
     dependencies {
+        compile "org.projectlombok:lombok:1.18.2"
         testCompile group: 'junit', name: 'junit', version: '4.12'
     }
 }

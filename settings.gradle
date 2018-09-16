@@ -1,3 +1,4 @@
 rootProject.name = 'spring-demo'
 include 'demo'
+include 'web-content'
 
