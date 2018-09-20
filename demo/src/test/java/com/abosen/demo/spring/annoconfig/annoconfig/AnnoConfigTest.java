@@ -19,7 +19,7 @@ public class AnnoConfigTest {
     @Test
     public void getSimpleBeanFromDualConfigurations() {
         ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("spring/annoconfig/override/XMLConfig.xml");
+                new ClassPathXmlApplicationContext("spring/annoconfig/XMLConfig.xml");
         System.out.println(applicationContext.getBean("simpleBean"));
     }
 }
