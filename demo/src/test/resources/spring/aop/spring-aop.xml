@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 异常抛出增强 -->
+    <bean id="transactionAdvice" class="com.abosen.demo.spring.aop.springaop.TransactionAdvice"/>
+    <!-- 被代理/增强的类 -->
+    <bean id="forumServiceTarget" class="com.abosen.demo.spring.aop.springaop.ForumServiceImpl"/>
+
+    <!--使用spring的ProxyFactoryBean配置代理-->
+    <bean id="forumService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!--代理的接口 多个接口使用list标签-->
+        <property name="proxyInterfaces">
+            <list>
+                <value>com.abosen.demo.spring.aop.springaop.ForumService</value>
+            </list>
+        </property>
+        <!--开启优化 使用CGLIB代理-->
+        <property name="optimize" value="true"/>
+        <!--指定代理目标-->
+        <property name="target" ref="forumServiceTarget"/>
+        <!--增强bean的名称 多个使用list标签-->
+        <property name="interceptorNames" value="transactionAdvice"/>
+    </bean>
+</beans>
