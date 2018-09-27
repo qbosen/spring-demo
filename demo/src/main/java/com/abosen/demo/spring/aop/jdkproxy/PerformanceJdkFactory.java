@@ -10,10 +10,10 @@ import java.lang.reflect.Proxy;
  * @author qiubaisen
  * @date 2018/9/27
  */
-public class PerformanceHandler implements InvocationHandler {
+public class PerformanceJdkFactory implements InvocationHandler {
     private Object target;
 
-    public PerformanceHandler(Object target) {
+    public PerformanceJdkFactory(Object target) {
         this.target = target;
     }
 
