@@ -16,6 +16,5 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-beans', version: "${springVersion}"
     compile group: 'org.springframework', name: 'spring-context', version: "${springVersion}"
 
-    compile group: 'cglib', name: 'cglib', version: '3.2.8'
-    compile group: 'org.ow2.asm', name: 'asm', version: '6.2.1'
+    testCompile "org.springframework:spring-test:${springVersion}"
 }
