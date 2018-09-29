@@ -1,6 +1,6 @@
 package com.abosen.demo.spring.aop;
 
-import com.abosen.demo.spring.aop.springaop.ControllablePerformanceMonitor;
+import com.abosen.demo.spring.aop.springaop.IntroductionMonitor;
 import com.abosen.demo.spring.aop.springaop.ForumService;
 import com.abosen.demo.spring.aop.springaop.ForumServiceImpl;
 import com.abosen.demo.spring.aop.springaop.Monitorable;
@@ -51,8 +51,8 @@ public class IntroduceTest {
 @Configuration
 class IntroduceConfig {
     @Bean
-    public ControllablePerformanceMonitor monitor() {
-        return new ControllablePerformanceMonitor();
+    public IntroductionMonitor monitor() {
+        return new IntroductionMonitor();
     }
 
     @Bean("target")

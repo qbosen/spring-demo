@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
  * @author qiubaisen
  * @date 2018/9/29
  */
-public class ControllablePerformanceMonitor extends DelegatingIntroductionInterceptor implements Monitorable {
+public class IntroductionMonitor extends DelegatingIntroductionInterceptor implements Monitorable {
     /**
      * 引介增强可以为目标类创建实现某接口的代理
      * 这里实现了一个可以开关的监测接口
