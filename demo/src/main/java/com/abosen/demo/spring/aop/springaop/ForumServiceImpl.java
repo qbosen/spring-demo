@@ -10,6 +10,7 @@ public class ForumServiceImpl implements ForumService {
     @Override
     public void updateIndex() {
         try {
+            System.out.println("updating...");
             Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -18,6 +19,7 @@ public class ForumServiceImpl implements ForumService {
 
     @Override
     public void removeAllUser() throws SQLException {
+        System.out.println("try drop...");
         throw new SQLException("数据库异常");
     }
 }

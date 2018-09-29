@@ -4,6 +4,7 @@ import com.abosen.demo.spring.aop.springaop.ForumService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -20,6 +21,10 @@ public class XmlSpringAopTest {
     @Autowired
     private ApplicationContext applicationContext;
 
+    @Autowired
+    @Qualifier("forumService")
+    private ForumService injectService; // 指定注入代理类
+
     @Test(expected = SQLException.class)
     public void testThrowAdvice() throws SQLException {
         // forumService 是一个FactoryBean 在取bean的时候，会去工厂里拿，这里拿到了我们要的代理
@@ -27,4 +32,12 @@ public class XmlSpringAopTest {
         forumService.updateIndex();     // 不会被增强
         forumService.removeAllUser();   // 增强事务
     }
+
+    @Test(expected = SQLException.class)
+    public void testThrowAdviceByInjectProxy() throws SQLException {
+        // 直接注入代理
+        injectService.updateIndex();     // 不会被增强
+        injectService.removeAllUser();   // 增强事务
+    }
+
 }

@@ -11,7 +11,7 @@ import org.junit.Test;
  * @author qiubaisen
  * @date 2018/9/27
  */
-public class ProxyAopTest {
+public class MyProxyAopTest {
     @Test
     public void testJdkProxyAop() {
         Calculate calculate = new Calculator();
