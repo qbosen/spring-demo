@@ -48,4 +48,15 @@ public class AdvisorTest {
         waiter.serveTo("Yao");
         seller.greetTo("Jacky Ma");
     }
+
+    @Test
+    public void xmlRegexpMethodAdvisor() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/aop/regexp-advisor.xml");
+        Waiter waiter = (Waiter) applicationContext.getBean("waiter");
+        Seller seller = (Seller) applicationContext.getBean("seller");
+
+        waiter.greetTo("James");
+        waiter.serveTo("Yao");
+        seller.greetTo("Jacky Ma");
+    }
 }
