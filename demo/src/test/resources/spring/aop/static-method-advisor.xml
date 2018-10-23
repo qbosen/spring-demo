@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="waiterTarget" class="com.abosen.demo.spring.aop.proxyadvisor.Waiter"/>
+    <bean id="sellerTarget" class="com.abosen.demo.spring.aop.proxyadvisor.Seller"/>
+    <bean id="greetingAdvice" class="com.abosen.demo.spring.aop.proxyadvisor.staticmethod.GreetingBeforeAdvice"/>
+    <bean id="greetingAdvisor" class="com.abosen.demo.spring.aop.proxyadvisor.staticmethod.GreetingAdvisor">
+        <property name="advice" ref="greetingAdvice"/>
+    </bean>
+
+    <bean id="parent" abstract="true" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="interceptorNames" value="greetingAdvisor"/>
+        <property name="proxyTargetClass" value="true"/>
+    </bean>
+
+    <bean id="waiter" parent="parent">
+        <property name="target" ref="waiterTarget"/>
+    </bean>
+    <bean id="seller" parent="parent">
+        <property name="target" ref="sellerTarget"/>
+    </bean>
+</beans>
