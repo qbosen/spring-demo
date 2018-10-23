@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="waiterTarget" class="com.abosen.demo.spring.aop.proxyadvisor.Waiter"/>
+    <bean id="sellerTarget" class="com.abosen.demo.spring.aop.proxyadvisor.Seller"/>
+    <bean id="dynamicAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut">
+            <bean class="com.abosen.demo.spring.aop.proxyadvisor.dynamicmethod.GreetingDynamicPointcut"/>
+        </property>
+        <property name="advice">
+            <bean class="com.abosen.demo.spring.aop.proxyadvisor.staticmethod.GreetingBeforeAdvice"/>
+        </property>
+    </bean>
+
+    <bean id="parent" abstract="true" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="interceptorNames" value="dynamicAdvisor"/>
+        <property name="proxyTargetClass" value="true"/>
+    </bean>
+
+    <bean id="waiter" parent="parent">
+        <property name="target" ref="waiterTarget"/>
+    </bean>
+    <bean id="seller" parent="parent">
+        <property name="target" ref="sellerTarget"/>
+    </bean>
+</beans>

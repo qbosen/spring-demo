@@ -59,4 +59,17 @@ public class AdvisorTest {
         waiter.serveTo("Yao");
         seller.greetTo("Jacky Ma");
     }
+
+    @Test
+    public void xmlDynamicMethodAdvisor(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/aop/dynamic-method-advisor.xml");
+        Waiter waiter = (Waiter) applicationContext.getBean("waiter");
+        Seller seller = (Seller) applicationContext.getBean("seller");
+
+        waiter.greetTo("James");
+        waiter.serveTo("Yao");
+        seller.greetTo("John");
+
+        waiter.greetTo("John");     //special client
+    }
 }
