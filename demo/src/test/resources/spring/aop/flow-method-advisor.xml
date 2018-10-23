@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="controlFlowPointcut" class="com.abosen.demo.spring.aop.proxyadvisor.flowadvisor.GreetingFlowPointCut">
+        <!-- 指定流程切点的类和方法 -->
+        <constructor-arg type="java.lang.Class"
+                         value="com.abosen.demo.spring.aop.proxyadvisor.flowadvisor.WaiterDelegate"/>
+        <!-- 被代理类的方法入口如果来自 此类此方法 则增强该方法 -->
+        <constructor-arg type="java.lang.String" value="service"/>
+    </bean>
+
+    <bean id="controlFlowAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut" ref="controlFlowPointcut"/>
+        <property name="advice">
+            <bean class="com.abosen.demo.spring.aop.proxyadvisor.staticmethod.GreetingBeforeAdvice"/>
+        </property>
+    </bean>
+
+    <bean id="parent" abstract="true" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="interceptorNames" value="controlFlowAdvisor"/>
+        <property name="proxyTargetClass" value="true"/>
+    </bean>
+
+    <bean id="waiter" parent="parent">
+        <property name="target">
+            <bean class="com.abosen.demo.spring.aop.proxyadvisor.Waiter"/>
+        </property>
+    </bean>
+    <bean id="seller" parent="parent">
+        <property name="target">
+            <bean class="com.abosen.demo.spring.aop.proxyadvisor.Seller"/>
+        </property>
+    </bean>
+    <bean id="waiterDelegate" parent="parent">
+        <property name="target">
+            <bean class="com.abosen.demo.spring.aop.proxyadvisor.flowadvisor.WaiterDelegate"/>
+        </property>
+    </bean>
+
+</beans>

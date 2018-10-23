@@ -2,6 +2,7 @@ package com.abosen.demo.spring.aop;
 
 import com.abosen.demo.spring.aop.proxyadvisor.Seller;
 import com.abosen.demo.spring.aop.proxyadvisor.Waiter;
+import com.abosen.demo.spring.aop.proxyadvisor.flowadvisor.WaiterDelegate;
 import com.abosen.demo.spring.aop.proxyadvisor.staticmethod.GreetingAdvisor;
 import com.abosen.demo.spring.aop.proxyadvisor.staticmethod.GreetingBeforeAdvice;
 import org.junit.Test;
@@ -61,7 +62,7 @@ public class AdvisorTest {
     }
 
     @Test
-    public void xmlDynamicMethodAdvisor(){
+    public void xmlDynamicMethodAdvisor() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/aop/dynamic-method-advisor.xml");
         Waiter waiter = (Waiter) applicationContext.getBean("waiter");
         Seller seller = (Seller) applicationContext.getBean("seller");
@@ -71,5 +72,20 @@ public class AdvisorTest {
         seller.greetTo("John");
 
         waiter.greetTo("John");     //special client
+    }
+
+    @Test
+    public void xmlControlFlowMethodAdvisor() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/aop/flow-method-advisor.xml");
+        Waiter waiter = (Waiter) applicationContext.getBean("waiter");
+        Seller seller = (Seller) applicationContext.getBean("seller");
+        WaiterDelegate delegate = (WaiterDelegate) applicationContext.getBean("waiterDelegate");
+        delegate.setWaiter(waiter);
+
+        waiter.greetTo("James");
+        waiter.serveTo("Yao");
+        seller.greetTo("John");
+        // 由delegate调用的 greetTo, serveTo 都被增强了
+        delegate.service("Peter");
     }
 }
