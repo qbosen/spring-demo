@@ -88,4 +88,19 @@ public class AdvisorTest {
         // 由delegate调用的 greetTo, serveTo 都被增强了
         delegate.service("Peter");
     }
+
+    @Test
+    public void testComposableMethodAdvisor() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/aop/composable-pointcut.xml");
+        Waiter waiter = (Waiter) applicationContext.getBean("waiter");
+        Seller seller = (Seller) applicationContext.getBean("seller");
+        WaiterDelegate delegate = (WaiterDelegate) applicationContext.getBean("waiterDelegate");
+        delegate.setWaiter(waiter);
+
+        waiter.greetTo("James");
+        waiter.serveTo("Yao");
+        seller.greetTo("John");
+        // 由delegate调用的 greetTo 被增强了
+        delegate.service("Peter");
+    }
 }
