@@ -22,4 +22,17 @@ public class AutoProxyTest {
         waiter.greetTo("Tom");
         seller.greetTo("Jack");
     }
+
+    @Test
+    public void testDefaultAdvisorAutoProxyCreator() {
+        /**
+         * 自动代理所有advisor
+         */
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/aop/autoproxy/default-advisor-auto-proxy.xml");
+        Waiter waiter = applicationContext.getBean(Waiter.class);
+        Seller seller = applicationContext.getBean(Seller.class);
+        waiter.greetTo("Tom");
+        waiter.serveTo("Newton");
+        seller.greetTo("Jack");
+    }
 }
