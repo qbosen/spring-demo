@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- 目标bean -->
-    <bean id="waiter" class="com.abosen.demo.spring.aop.aspectj.beans.NativeWaiter"/>
+    <bean id="waiter" class="com.abosen.demo.spring.aop.aspectj.beans.NaiveWaiter"/>
     <!-- 使用了@Aspect 注解的切面 -->
     <bean class="com.abosen.demo.spring.aop.aspectj.base.PreGreetingAspect"/>
     <!-- 自动代理创建器，把使用了 @Aspect 注解的切面类织入目标bean -->

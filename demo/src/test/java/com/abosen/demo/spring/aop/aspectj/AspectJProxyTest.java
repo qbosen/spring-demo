@@ -1,6 +1,6 @@
 package com.abosen.demo.spring.aop.aspectj;
 
-import com.abosen.demo.spring.aop.aspectj.beans.NativeWaiter;
+import com.abosen.demo.spring.aop.aspectj.beans.NaiveWaiter;
 import com.abosen.demo.spring.aop.aspectj.base.PreGreetingAspect;
 import com.abosen.demo.spring.aop.aspectj.beans.Waiter;
 import com.abosen.demo.spring.aop.aspectj.introduct.IntroduceAspectConfiguration;
@@ -18,7 +18,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class AspectJProxyTest {
     @Test
     public void baseProxyTest() {
-        Waiter waiter = new NativeWaiter();
+        Waiter waiter = new NaiveWaiter();
         AspectJProxyFactory proxyFactory = new AspectJProxyFactory();
         proxyFactory.setTarget(waiter);
         proxyFactory.addAspect(PreGreetingAspect.class);

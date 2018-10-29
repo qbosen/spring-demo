@@ -4,6 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!-- 内部实现还是使用 AnnotationAwareAspectJAutoProxyCreator 进行代理的自动创建 -->
     <aop:aspectj-autoproxy/>
-    <bean class="com.abosen.demo.spring.aop.aspectj.beans.NativeWaiter"/>
+    <bean class="com.abosen.demo.spring.aop.aspectj.beans.NaiveWaiter"/>
     <bean class="com.abosen.demo.spring.aop.aspectj.base.PreGreetingAspect"/>
 </beans>

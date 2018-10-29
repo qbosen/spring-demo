@@ -1,6 +1,6 @@
 package com.abosen.demo.spring.aop.aspectj.introduct;
 
-import com.abosen.demo.spring.aop.aspectj.beans.NativeWaiter;
+import com.abosen.demo.spring.aop.aspectj.beans.NaiveWaiter;
 import com.abosen.demo.spring.aop.aspectj.beans.Waiter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class IntroduceAspectConfiguration {
     @Bean
     public Waiter waiter() {
-        return new NativeWaiter();
+        return new NaiveWaiter();
     }
 
     @Bean
