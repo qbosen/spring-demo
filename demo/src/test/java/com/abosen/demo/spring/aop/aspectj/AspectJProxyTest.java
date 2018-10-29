@@ -5,6 +5,8 @@ import com.abosen.demo.spring.aop.aspectj.base.PreGreetingAspect;
 import com.abosen.demo.spring.aop.aspectj.base.Waiter;
 import org.junit.Test;
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @author qiubaisen
@@ -20,5 +22,20 @@ public class AspectJProxyTest {
         Waiter proxy = proxyFactory.getProxy();
         proxy.greetTo("John");
         proxy.serveTo("John");
+    }
+
+    @Test
+    public void xmlAnnoAwareAutoProxyTest() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/aop/aspectj/base-anno-aware.xml");
+        Waiter waiter = applicationContext.getBean(Waiter.class);
+        waiter.greetTo("John");
+        waiter.serveTo("John");
+    }
+    @Test
+    public void xmlAopSchemaAutoProxyTest() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/aop/aspectj/schema-base-auto-proxy.xml");
+        Waiter waiter = applicationContext.getBean(Waiter.class);
+        waiter.greetTo("John");
+        waiter.serveTo("John");
     }
 }
