@@ -1,9 +1,6 @@
 package com.abosen.demo.spring.aop.aspectj.beans;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * @author qiubaisen
@@ -11,6 +8,7 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
+@Inherited
 public @interface NeedTest {
-    boolean value() default false;
+    boolean value() default true;
 }
