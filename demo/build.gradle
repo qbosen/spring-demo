@@ -16,5 +16,10 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-beans', version: "${springVersion}"
     compile group: 'org.springframework', name: 'spring-context', version: "${springVersion}"
 
+    // aspect support
+    compile group: 'org.aspectj', name: 'aspectjweaver', version: "${aspectjVersion}"
+    compile group: 'org.aspectj', name: 'aspectjtools', version: "${aspectjVersion}"
+
+
     testCompile "org.springframework:spring-test:${springVersion}"
 }
