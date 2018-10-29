@@ -1,7 +1,7 @@
 package com.abosen.demo.spring.aop.aspectj.introduct;
 
-import com.abosen.demo.spring.aop.aspectj.base.NativeWaiter;
-import com.abosen.demo.spring.aop.aspectj.base.Waiter;
+import com.abosen.demo.spring.aop.aspectj.beans.NativeWaiter;
+import com.abosen.demo.spring.aop.aspectj.beans.Waiter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;

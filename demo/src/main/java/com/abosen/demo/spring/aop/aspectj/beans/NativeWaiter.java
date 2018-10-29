@@ -1,4 +1,4 @@
-package com.abosen.demo.spring.aop.aspectj.base;
+package com.abosen.demo.spring.aop.aspectj.beans;
 
 /**
  * @author qiubaisen

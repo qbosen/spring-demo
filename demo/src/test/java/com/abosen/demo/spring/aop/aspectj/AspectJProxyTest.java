@@ -1,10 +1,10 @@
 package com.abosen.demo.spring.aop.aspectj;
 
-import com.abosen.demo.spring.aop.aspectj.base.NativeWaiter;
+import com.abosen.demo.spring.aop.aspectj.beans.NativeWaiter;
 import com.abosen.demo.spring.aop.aspectj.base.PreGreetingAspect;
-import com.abosen.demo.spring.aop.aspectj.base.Waiter;
+import com.abosen.demo.spring.aop.aspectj.beans.Waiter;
 import com.abosen.demo.spring.aop.aspectj.introduct.IntroduceAspectConfiguration;
-import com.abosen.demo.spring.aop.aspectj.introduct.Seller;
+import com.abosen.demo.spring.aop.aspectj.beans.Seller;
 import org.junit.Test;
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
 import org.springframework.context.ApplicationContext;

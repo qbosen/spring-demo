@@ -1,5 +1,7 @@
 package com.abosen.demo.spring.aop.aspectj.introduct;
 
+import com.abosen.demo.spring.aop.aspectj.beans.Seller;
+import com.abosen.demo.spring.aop.aspectj.beans.SmartSeller;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.DeclareParents;
 
@@ -10,6 +12,6 @@ import org.aspectj.lang.annotation.DeclareParents;
 
 @Aspect
 public class EnableSellerAspect {
-    @DeclareParents(value = "com.abosen.demo.spring.aop.aspectj.base.*Waiter", defaultImpl = SmartSeller.class)
+    @DeclareParents(value = "com.abosen.demo.spring.aop.aspectj.beans.NativeWaiter", defaultImpl = SmartSeller.class)
     public Seller seller;
 }
