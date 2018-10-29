@@ -7,6 +7,6 @@ package com.abosen.demo.spring.aop.aspectj.beans;
 public class SmartSeller implements Seller {
     @Override
     public void sell(String goods, String clientName) {
-        System.out.println(String.format("Seller sell %s to %s", goods, clientName));
+        System.out.println(String.format("SmartSeller:sell %s to %s", goods, clientName));
     }
 }
