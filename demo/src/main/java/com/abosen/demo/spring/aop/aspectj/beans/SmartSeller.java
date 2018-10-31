@@ -6,7 +6,13 @@ package com.abosen.demo.spring.aop.aspectj.beans;
  */
 public class SmartSeller implements Seller {
     @Override
-    public void sell(String goods, String clientName) {
-        System.out.println(String.format("SmartSeller:sell %s to %s", goods, clientName));
+    public int sell(String goods,String clientName) {
+        System.out.println("SmartSeller: sell "+goods +" to "+clientName+"...");
+        return 100;
+    }
+
+    public void checkBill(int billId){
+        if(billId == 1) throw new IllegalArgumentException("iae Exception");
+        else throw new RuntimeException("re Exception");
     }
 }
