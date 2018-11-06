@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="numberGuess" class="com.abosen.demo.spring.spel.xml.NumberGuess"
+          p:randomNumber="#{T(java.lang.Math).random() * 100.0}"
+    />
+
+    <bean id="systemPropertyBean" class="com.abosen.demo.spring.spel.xml.SystemPropertyBean"
+          p:osName="#{systemProperties['os.name']}"
+          p:javaHome="#{systemProperties['java.home']}"
+          p:classPath="much to ignore!"
+          p:javaVersion="#{systemProperties['java.version']}"
+    />
+</beans>
