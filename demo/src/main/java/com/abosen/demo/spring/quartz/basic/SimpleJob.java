@@ -13,6 +13,6 @@ import java.util.Date;
 public class SimpleJob implements Job {
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
-        System.out.println(context.getTrigger().getKey() + " triggered. time is " + new Date());
+        System.out.println(Thread.currentThread().getName() + ": " + context.getTrigger().getKey() + " triggered. time is " + new Date());
     }
 }

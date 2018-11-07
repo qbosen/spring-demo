@@ -3,13 +3,18 @@ package com.abosen.demo.spring.quartz.basic;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 
+import java.util.Date;
+
 /**
  * @author qiubaisen
  * @date 2018/11/6
  */
 public class SimpleTriggerRunner {
     public static void main(String[] args) throws Exception {
-        JobDetail jobDetail = JobBuilder.newJob(SimpleJob.class).withIdentity("job1_1", "jGroup1").build();
+        JobDetail jobDetail = JobBuilder
+                .newJob(SimpleJob.class)
+                .withIdentity("job1_1", "jGroup1")
+                .build();
 
         SimpleTrigger trigger = TriggerBuilder
                 .newTrigger()
@@ -27,5 +32,8 @@ public class SimpleTriggerRunner {
 
         scheduler.scheduleJob(jobDetail, trigger);
         scheduler.start();
+        Thread.sleep(30L * 1000L);
+        System.out.println("Shut down " + scheduler.getSchedulerName() + " at " + new Date());
+        scheduler.shutdown(true);
     }
 }
