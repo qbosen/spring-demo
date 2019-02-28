@@ -1,0 +1,13 @@
+<!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "http://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<aspectj>
+    <!--<weaver options="-verbose -showWeaveInfo -debug">-->
+    <weaver>
+        <include within="com.abosen.demo.spring.aop.aspectj.anno.*"/>
+    </weaver>
+
+    <aspects>
+        <!-- weave in just this aspect -->
+        <aspect name="com.abosen.demo.spring.aop.aspectj.anno.StaticInterceptAspect"/>
+    </aspects>
+
+</aspectj>

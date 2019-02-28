@@ -1,21 +1,22 @@
+
+
 plugins {
     id 'java'
 }
 
-group 'com.abosen'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+
 }
 
 dependencies {
+
     compile group: 'org.springframework', name: 'spring-core', version: "${springVersion}"
     compile group: 'org.springframework', name: 'spring-beans', version: "${springVersion}"
     compile group: 'org.springframework', name: 'spring-context', version: "${springVersion}"
     compile group: 'org.springframework', name: 'spring-expression', version: "${springVersion}"
+    compile group: 'org.springframework', name: 'spring-instrument', version: "${springVersion}"
 
     // aspect support
     compile group: 'org.aspectj', name: 'aspectjweaver', version: "${aspectjVersion}"
@@ -26,3 +27,8 @@ dependencies {
 
     testCompile "org.springframework:spring-test:${springVersion}"
 }
+
+group 'com.abosen'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8

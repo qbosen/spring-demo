@@ -2,6 +2,7 @@ package com.abosen.demo.spring.aop.aspectj.base;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 
 /**
  * @author qiubaisen
