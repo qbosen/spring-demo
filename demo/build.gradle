@@ -26,6 +26,9 @@ dependencies {
     compile group: 'org.quartz-scheduler', name: 'quartz', version: '2.3.0'
 
     testCompile "org.springframework:spring-test:${springVersion}"
+
+    compile group: 'net.jodah', name: 'typetools', version: '0.6.1'
+
 }
 
 group 'com.abosen'
